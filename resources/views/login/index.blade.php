@@ -10,6 +10,7 @@
   <title>{{ config('app.name') }}</title>
   <?=CDN_CSS_CORE_ALL?>
   <?=CDN_CSS_MAIN?>
+  <?=CDN_CSS_FONTAWESOME_ALL?>
 </head>
 
 <body class="bg-gray-100">
@@ -27,24 +28,24 @@
             <div class="card-body">
               <form role="form" class="text-start needs-validation" method="post" action="login" novalidate>
                 @csrf
-                <label>E-mail</label>
-                <div class="mb-3">
-                    <input type="text" name="email" class="form-control" value="{{old('email')}}" required>
-                    {{-- show error --}}
-                    @error('email')
-                        <div class="text-danger text-xs">{{$message}}</div>
-                    @enderror
-                </div>
-                <label>Senha</label>
-                <div class="mb-3">
-                    <input type="password" name="password" class="form-control" required>
-                    {{-- show error --}}
-                    @error('password')
-                        <div class="text-danger text-xs">{{$message}}</div>
-                    @enderror
-                </div>
+                <x-form.input
+                    campo="email"
+                    label="E-mail"
+                    value="{{old('email')}}"
+                    placeholder="Digite seu e-mail"
+                />
+                <x-form.input
+                    campo="password"
+                    label="Senha"
+                    type="password"
+                    placeholder="Digite sua senha"
+                />
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary w-100 mt-4 mb-0">Acessar</button>
+                  <x-form.button
+                    text="Acessar"
+                    type="submit"
+                    class="w-100 mt-4 mb-0"
+                  />
 
                     {{-- invalid login --}}
                     @error('login')
@@ -67,6 +68,7 @@
   </main>
   <!--   Core JS Files   -->
   <?=CDN_JS_CORE_ALL?>
+  <?=CDN_JS_FONTAWESOME_ALL?>
   <?=CDN_JS_MAIN?>
 </body>
 

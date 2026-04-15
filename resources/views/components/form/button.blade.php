@@ -1,12 +1,24 @@
-<button class="btn btn-primary" type="button">Button</button>
 
-<button class="btn btn-icon btn-3 btn-primary" type="button">
-    <span class="btn-inner--icon">
-        <i class="ni ni-button-play"></i>
-    </span>
-    <span class="btn-inner--text">With icon</span>
-</button>
-
-<button class="btn btn-icon btn-2 btn-primary" type="button">
-	<span class="btn-inner--icon"><i class="ni ni-bulb-61"></i></span>
-</button>
+<{{ $tag }} class="btn btn-{{ $color }} {{ $width }} {{ $class }}" {!! $atrributes !!}>
+    @if (isset($icon) && $positionIcon == 'before')
+        <span
+        @class([
+            "btn-inner--icon",
+            ($text ? 'me-2' : '')
+        ])>
+            <i class="{{ $icon }}"></i>
+        </span>
+    @endif
+    @isset($text)
+        <span class="btn-inner--text">{{ $text }}</span>
+    @endisset
+    @if (isset($icon) && $positionIcon == 'after')
+        <span
+        @class([
+            "btn-inner--icon",
+            ($text ? 'ms-2' : '')
+        ])>
+            <i class="{{ $icon }}"></i>
+        </span>
+    @endif
+</{{ $tag }}>

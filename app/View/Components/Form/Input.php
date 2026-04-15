@@ -13,15 +13,16 @@ class Input extends Component
      */
     public function __construct(
         public string $campo,
-        public ?string $label=null,
         public bool $required = false,
-        public ?string $type = 'text',
+        public string $type = 'text',
+        public ?string $label=null,
         public ?string $value = null,
         public ?string $placeholder = null,
-        public ?string $classe = null,
+        public ?string $class = null,
+        public string $classInput = '',
         public ?string $campoId = null,
         public ?string $inputGroup = null,
-        public ?string $positionGroup = null
+        public ?string $positionGroup = 'after',
         ){}
 
     /**
