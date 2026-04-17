@@ -4,6 +4,7 @@
         BREADCRUMB[1],
     ];
     $page = PAGE[1];
+    session()->flash('message', 'Updated!');
 
 ?>
 <x-layouts.base
@@ -13,6 +14,8 @@
     <x-table.lista
         title="Lista de Usuários"
         textButton="Adicionar Usuário"
+        urlButton="usuario.create"
+        description="Aqui estão listados todos os usuários cadastrados no sistema."
     >
         <x-table.table-db
             :ths="['Nome', 'Email']"

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Form;
+namespace App\View\Components\Forms;
 
 use Closure;
 use Illuminate\View\Component;
@@ -15,6 +15,8 @@ class Button extends Component
         public ?string $text = null,
         public ?string $icon = null,
         public bool $full = false,
+        public string $modal = '',
+        public bool $disabled = false,
         public string $class = '',
         public string $type = 'button',
         public string $url = 'javascript:void(0)',
@@ -28,14 +30,21 @@ class Button extends Component
     public function render(): View|Closure|string
     {
         $tag = 'button';
+        $icon = $this->icon;
         $width = $this->full ? 'w-100' : '';
         $atrributes = 'type="' . $this->type . '"';
         $classIcon = '';
-        if($this->type == 'link'){
+        if(!empty($this->modal)) {
+            $tag = 'button';
+            $attributes = 'type="button" data-bs-toggle="modal" data-bs-target="#' . $this->modal . 'Modal"';
+            $class = $this->class . ' btn_prepare_' . $this->modal;
+        }
+        if($this->type == 'link' || $this->text == 'Cancelar') {
             $tag = 'a';
-            $atrributes = 'href="' . $this->url . '"';
+            $atrributes = 'href="' . route($this->url) . '"';
+            if($this->text == 'Cancelar')  $this->color = 'outline-danger';
         }
 
-        return view('components.form.button', compact('tag', 'atrributes', 'width'));
+        return view('components.forms.button', compact('tag', 'atrributes', 'width'));
     }
 }

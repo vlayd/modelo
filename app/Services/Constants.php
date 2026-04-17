@@ -93,6 +93,17 @@ define('CDN_JS_PERFECT_SCROLLBAR', '
 ');
 
 define('CDN_JS_MAIN', '<script src="'.CDN_JS.'argon-dashboard.min.js?v=2.0.5"></script>');
+define ('PLUGIN_JS',
+    [
+        'choices' => JS_PLUGIN_CHOICES,
+        'datatables' => CDN_JS_DATATABLES,
+        'mask' => CDN_JS_MASK,
+        'toast' => CDN_JS_TOAST,
+        'sweetalert2' => CDN_JS_SWEETALERT2,
+        'quill' => CDN_JS_QUILL,
+        'perfect-scrollbar' => CDN_JS_PERFECT_SCROLLBAR,
+    ]
+);
 
 //________________________ARRAYS UTEIS________________________________
 define('MES', [

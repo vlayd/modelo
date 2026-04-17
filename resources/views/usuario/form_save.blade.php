@@ -1,5 +1,6 @@
 <?php
     $title = 'Página Inicial';
+
     $breadcrumb = [
         BREADCRUMB[0],
     ];
@@ -15,22 +16,23 @@
             <p>Cadastrando os usuários</p>
         </x-slot:header>
         <div class="row">
-            
         </div>
-        <form action="{{ route('usuario.store') }}" method="POST">
+        <form action="{{ route('usuario.store') }}" method="POST" novalidate>
             @csrf
-            <div class="mb-3">
-                <label for="name" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+            <div class="row">
+                <x-forms.input campo="name" label="Nome" value="{{old('name')}}" class="col-6" required='true'/>
+                <x-forms.input campo="cpf" label="CPF" value="{{old('cpf')}}" classInput="cpf" class="col-6" required='true'/>
+                <x-forms.input campo="email" type="email" label="Email" value="{{old('email')}}" class="col-6" required='true'/>
+                <x-forms.input campo="birth" type="date" label="Nascimento" value="{{old('birth')}}" class="col-6" required='true'/>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <x-forms.button text="Salvar" type="submit" class="mt-4"/>
+            <x-forms.button text="Cancelar" url="{{ BREADCRUMB[1][1] }}" class="mt-4"/>
+        </form>
     </x-cards.card>
+
+    <x-slot:scripts>
+
+        <?=CDN_JS_MASK?>
+    </x-slot:scripts>
+
 </x-layouts.base>

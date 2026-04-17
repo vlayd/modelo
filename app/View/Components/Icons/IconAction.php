@@ -11,7 +11,11 @@ class IconAction extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $type, public string $modal = '', public bool $disabled = false )
+    public function __construct(
+        public string $type,
+        public string $modal = '',
+        public bool $disabled = false
+    )
     {}
 
     /**
@@ -65,7 +69,6 @@ class IconAction extends Component
             $attributes = '';
             $color = 'secondary';
             $class .= ' disabled';
-
         }
         return view('components.icons.icon-action', [
             'color' => $color,

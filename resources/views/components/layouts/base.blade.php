@@ -196,7 +196,7 @@ $menusBar = [
       </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4 px-3">
         {{ $slot }}
     </div>
   </main>
@@ -207,7 +207,7 @@ $menusBar = [
   <?=CDN_JS_PERFECT_SCROLLBAR?>
   <?=CDN_JS_TOAST?>
   <?=CDN_JS_PAGES?>
-  @yield('js')
+  {{ $scripts ?? '' }}
   @if (isset($js))
   <script src="{{asset('assets/js/view/'.$js.'.js')}}" type="text/javascript"></script>
   @endif

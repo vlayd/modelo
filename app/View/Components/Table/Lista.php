@@ -14,6 +14,9 @@ class Lista extends Component
     public function __construct(
         public string $title,
         public string $textButton,
+        public string $urlButton='',
+        public bool $showButton = true,
+        public string $description = '',
     ){}
 
     /**

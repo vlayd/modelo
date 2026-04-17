@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Form;
+namespace App\View\Components\Forms;
 
 use Closure;
 use Illuminate\View\Component;
@@ -12,17 +12,17 @@ class Input extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $campo,
         public bool $required = false,
         public string $type = 'text',
+        public string $positionGroup = 'after',
+        public string $class = 'col-12',
+        public ?string $campo = null,
         public ?string $label=null,
         public ?string $value = null,
-        public ?string $placeholder = null,
-        public ?string $class = null,
-        public string $classInput = '',
+        public string $placeholder = '',
+        public ?string $classInput = '',
         public ?string $campoId = null,
         public ?string $inputGroup = null,
-        public ?string $positionGroup = 'after',
         ){}
 
     /**
@@ -30,6 +30,10 @@ class Input extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.input');
+        $required = '';
+        if ($this->required) {
+            $required = 'required';
+        }
+        return view('components.forms.input', compact('required'));
     }
 }

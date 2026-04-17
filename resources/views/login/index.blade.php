@@ -28,20 +28,20 @@
             <div class="card-body">
               <form role="form" class="text-start needs-validation" method="post" action="login" novalidate>
                 @csrf
-                <x-form.input
+                <x-forms.input
                     campo="email"
                     label="E-mail"
                     value="{{old('email')}}"
                     placeholder="Digite seu e-mail"
                 />
-                <x-form.input
+                <x-forms.input
                     campo="password"
                     label="Senha"
                     type="password"
                     placeholder="Digite sua senha"
                 />
                 <div class="text-center">
-                  <x-form.button
+                  <x-forms.button
                     text="Acessar"
                     type="submit"
                     class="w-100 mt-4 mb-0"

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 class UserController extends Controller
 {
@@ -23,6 +26,13 @@ class UserController extends Controller
 
     public function create()
     {
+        $page2 = 'usuariosCreate';
+        return view('usuario.form_save', compact('page2'));
+    }
+
+    public function store(StorePostRequest $request)
+    {
+        exit;
         $page2 = 'usuariosCreate';
         return view('usuario.form_save', compact('page2'));
     }
