@@ -1,6 +1,7 @@
 <?php
 //________________________TEXTOS BASE________________________________
-define('URL_BASE', 'http://10.26.8.175/');
+// define('URL_BASE', 'http://10.26.8.175/');
+define('URL_BASE', 'http://localhost/');
 define('NAME_APP', 'Sistema Modelo');
 
 //________________________PATH_______________________________________

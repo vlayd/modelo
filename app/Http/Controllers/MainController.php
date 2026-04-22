@@ -11,6 +11,7 @@ class MainController extends Controller
 {
     public function index()
     {
+        // dd(bcrypt('123'));
         // dd(Auth::user()->active);
         if (Auth::check()) {
             return view('home.index');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +33,26 @@ class UserController extends Controller
 
     public function store(StorePostRequest $request)
     {
+        $data = $request->validated();
+        User::create($data);
         exit;
         $page2 = 'usuariosCreate';
         return view('usuario.form_save', compact('page2'));
+    }
+
+    public function edit(string $id)
+    {
+        try {
+            // Desencripta o ID recebido
+            $decryptedId = decrypt($id);
+            
+            // Busca o usuário normalmente
+            $user = User::findOrFail($decryptedId);        
+            return view('usuario.form_save', compact('user'));        
+        } catch (DecryptException $e) {
+            // Se a chave for inválida ou alterada, redireciona com erro
+            return abort('404');
+        }
     }
 
     public function modalAjax()

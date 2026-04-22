@@ -26,10 +26,10 @@
                         @foreach ($actions as $action)
                             @isset($action['td'])
                                 @if ($item[$action['td']] == $action['value'])
-                                    <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false"/>
+                                    <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false" :route="$action['route']??''" />
                                 @endif
                             @else
-                                <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false"/>
+                                <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false" :route="$action['route']??''" />
                             @endisset
                         @endforeach
                     </td>

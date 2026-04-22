@@ -24,7 +24,7 @@
             :actions="
             [
                 ['type' => 'show', 'disabled' => true],
-                ['type' => 'edit'],
+                ['type' => 'edit', 'route' => 'usuario.edit'],
                 ['type' => 'delete'],
                 ['type' => 'unblock', 'td' => 'active', 'value' => '0'],
                 ['type' => 'block', 'td' => 'active', 'value' => '1'],

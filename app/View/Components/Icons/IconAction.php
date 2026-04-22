@@ -14,6 +14,7 @@ class IconAction extends Component
     public function __construct(
         public string $type,
         public string $modal = '',
+        public ?string $route = null,
         public bool $disabled = false
     )
     {}
@@ -23,7 +24,7 @@ class IconAction extends Component
      */
     public function render(): View|Closure|string
     {
-        $attributes = 'href="#"';
+        $attributes = empty($this->route) ? '': 'href="'.route($this->route).'"';
         $class = '';
         if(!empty($this->modal)) {
             $attributes = 'data-bs-toggle="modal" data-bs-target="#' . $this->modal . 'Modal"';
@@ -52,7 +53,7 @@ class IconAction extends Component
                 'title' => 'Bloquear',
             ],
             'unblock' => [
-                'color' => 'secondary',
+                'color' => 'dark',
                 'icon' => 'fas fa-user-slash',
                 'title' => 'Desbloquear',
             ],

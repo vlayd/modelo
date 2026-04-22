@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
@@ -14,7 +15,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('usuario');
         Route::get('/outra_pagina', [UserController::class, 'outraPagina'])->name('usuario.outra_pagina');
         Route::get('/create', [UserController::class, 'create'])->name('usuario.create');
-        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('usuario.edit');
+        Route::get('/edit', [UserController::class, 'edit'])->name('usuario.edit');
         Route::get('/modal_ajax', [UserController::class, 'modalAjax'])->name('usuario.modal_ajax');
         Route::get('/modal_reload', [UserController::class, 'modalReload'])->name('usuario.modal_reload');
         Route::post('/store', [UserController::class, 'store'])->name('usuario.store');
@@ -24,5 +25,8 @@ Route::middleware(['auth'])->group(function () {
 
 //Se nõa logado
 Route::middleware(['guest'])->group(function () {
+    Route::get('/login', function(){
+       return redirect()->route('index');
+    });
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });

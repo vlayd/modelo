@@ -20,7 +20,7 @@ class ViteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $urlBase = 'http://10.26.8.175/';
+        $urlBase = URL_BASE;
         $cdn = $urlBase . 'cdn/assets/';
         Vite::macro('images', fn ($asset) => $this->asset("resources/images/{$asset}"));
         Vite::macro('imgApoio', function ($img) use ($cdn) {
