@@ -18,5 +18,13 @@
             @endif
         </div>
     </x-slot:header>
-    {{ $slot }}
+    <div class="table-responsive" class="">
+    <table class="table table-flush table-striped table-hover" id="data-list-db">
+        {{ $thead }}
+        <tbody>
+            {{ $tbody }}
+        </tbody>
+
+    </table>
+</div>
 </x-cards.card>

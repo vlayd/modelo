@@ -1,16 +1,6 @@
 <div class="table-responsive" class="">
     <table class="table table-flush table-striped table-hover" id="data-list-db">
-        <thead class="thead-light">
-            <tr>
-                <th class="text-center">Nº</th>
-                @foreach ($ths as $th)
-                    <th class="text-center">{{ $th }}</th>
-                @endforeach
-                @isset($actions)
-                    <th class="text-center">Ações</th>
-                @endisset
-            </tr>
-        </thead>
+        {{ $thead }}
         <tbody>
             <?php $i=1; foreach ($lista as $item) : ?>
                 <tr>
@@ -24,12 +14,16 @@
                 @endforeach
                     <td class="text-sm pb-0 text-center">
                         @foreach ($actions as $action)
+                        @php
+                            $argRoute = '';
+                            if(isset($action['argRoute'])) $argRoute = encrypt($item[$action['argRoute']]);
+                        @endphp
                             @isset($action['td'])
                                 @if ($item[$action['td']] == $action['value'])
-                                    <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false" :route="$action['route']??''" />
+                                    <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false" :route="$action['route']??''" :argRoute="$argRoute??''" />
                                 @endif
                             @else
-                                <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false" :route="$action['route']??''" />
+                                <x-icons.icon-action :type="$action['type']" :disabled="$action['disabled']??false" :route="$action['route']??''" :argRoute="$argRoute??''" />
                             @endisset
                         @endforeach
                     </td>

@@ -15,7 +15,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('usuario');
         Route::get('/outra_pagina', [UserController::class, 'outraPagina'])->name('usuario.outra_pagina');
         Route::get('/create', [UserController::class, 'create'])->name('usuario.create');
-        Route::get('/edit', [UserController::class, 'edit'])->name('usuario.edit');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('usuario.edit');
         Route::get('/modal_ajax', [UserController::class, 'modalAjax'])->name('usuario.modal_ajax');
         Route::get('/modal_reload', [UserController::class, 'modalReload'])->name('usuario.modal_reload');
         Route::post('/store', [UserController::class, 'store'])->name('usuario.store');

@@ -14,6 +14,7 @@ class IconAction extends Component
     public function __construct(
         public string $type,
         public string $modal = '',
+        public string $argRoute = '',
         public ?string $route = null,
         public bool $disabled = false
     )
@@ -24,7 +25,7 @@ class IconAction extends Component
      */
     public function render(): View|Closure|string
     {
-        $attributes = empty($this->route) ? '': 'href="'.route($this->route).'"';
+        $attributes = empty($this->route) ? '': 'href='.route($this->route, $this->argRoute);
         $class = '';
         if(!empty($this->modal)) {
             $attributes = 'data-bs-toggle="modal" data-bs-target="#' . $this->modal . 'Modal"';
@@ -71,12 +72,12 @@ class IconAction extends Component
             $color = 'secondary';
             $class .= ' disabled';
         }
+        // if(!empty($this->route)) dd($attributes);
         return view('components.icons.icon-action', [
             'color' => $color,
             'icon' => $dados['icon'],
             'title' => $dados['title'],
-            'attributes' => $attributes,
-            'tag' => $tag,
+            'tag' => $tag . ' ' . $attributes,
             'class' => $class,
         ]);
     }

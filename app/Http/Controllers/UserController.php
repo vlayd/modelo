@@ -45,10 +45,10 @@ class UserController extends Controller
         try {
             // Desencripta o ID recebido
             $decryptedId = decrypt($id);
-            
+
             // Busca o usuário normalmente
-            $user = User::findOrFail($decryptedId);        
-            return view('usuario.form_save', compact('user'));        
+            $user = User::findOrFail($decryptedId);
+            return view('usuario.form_save', compact('user'));
         } catch (DecryptException $e) {
             // Se a chave for inválida ou alterada, redireciona com erro
             return abort('404');
