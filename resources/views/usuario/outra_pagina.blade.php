@@ -5,6 +5,8 @@
     ];
     $page = PAGE[1];
     session()->flash('message', 'Updated!');
+    $active = ['unblock', 'block'];
+    $status = ['1', '0'];
 ?>
 <x-layouts.base
     :$title
@@ -16,15 +18,20 @@
         urlButton="usuario.create"
         description="Aqui estão listados todos os usuários cadastrados no sistema.">
             <x-slot:thead>
-                <x-table.thead :ths="['Nome', 'Email', 'Ações']"/>
+                <x-table.th :ths="['Nome', 'Email', 'Ações']"/>
             </x-slot:thead>
             <x-slot:tbody>
                 @foreach ($usuarios as $usuario)
-                    <x-table.tbody :tds="[$usuario['name'], $usuario['email']]">
-                        <x-slot:actions>
-                            <x-icons.icon-action type="show" disabled="true"/>
-                        </x-slot:actions>
-                    </x-table.tbody>
+                    <x-table.td
+                        :tds="[
+                            $usuario['name'], $usuario['email'],
+                            [
+                                ['type' => 'show', 'disabled' => 'true'],
+                                ['type' => 'edit', 'route' => 'usuario.edit', 'argRoute' => encrypt($usuario['id'])],
+                                ['type' => $active[$usuario['active']], 'route' => 'usuario.change_status', 'argRoute' => [encrypt($usuario['id']), $status[$usuario['active']]]],
+                            ]
+                        ]"
+                    />
                 @endforeach
             </x-slot:tbody>
     </x-table.lista>

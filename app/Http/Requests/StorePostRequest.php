@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\CpfValidator;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePostRequest extends FormRequest
 {
@@ -23,13 +24,18 @@ class StorePostRequest extends FormRequest
      */
     public function rules(): array
     {
-        // dd($this->email);
-        return [
+        $id = '';
+        if($this->id) $id = decrypt($this->id);
+        // dd($id);
+        // Rule::unique('users')->ignore($this->id);
+        $rules = [
             'name'  => ['required', 'string', 'max:255'],
             'birth' => ['required', 'date', 'before:today'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'cpf'   => ['required', 'string', 'unique:users', new CpfValidator()],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
+            'cpf'   => ['required', 'string', 'unique:users,cpf,'.$id, new CpfValidator()],
         ];
+
+        return $rules;
     }
 
     public function messages(): array

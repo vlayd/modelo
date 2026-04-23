@@ -13,10 +13,10 @@ class IconAction extends Component
      */
     public function __construct(
         public string $type,
-        public string $modal = '',
-        public string $argRoute = '',
+        public $argRoute = '',
+        public bool $disabled = false,
+        public ?string $modal = null,
         public ?string $route = null,
-        public bool $disabled = false
     )
     {}
 

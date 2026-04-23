@@ -22,7 +22,7 @@
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
           <div class="card">
             <div class="card-header pb-0 text-center">
-              <img src="{{Vite::imgApoio('person_login.jpg')}}" class="img-fluid" alt="{{ config('app.name') }}" style="width: 100px;">
+              <img src="{{Vite::imgApoio('person_login.png')}}" class="img-fluid" alt="{{ config('app.name') }}" style="width: 100px;">
               <h3 class="font-weight-bolder">{{ config('app.name') }}</h3>
             </div>
             <div class="card-body">

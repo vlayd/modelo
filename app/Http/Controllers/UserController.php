@@ -6,16 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 
 class UserController extends Controller
 {
     public function index()
     {
-        $page2 = 'usuariosIndex';
-        return view('usuario.index', compact('page2'));
+        return view('usuario.index');
     }
 
     public function outraPagina()
@@ -34,10 +31,16 @@ class UserController extends Controller
     public function store(StorePostRequest $request)
     {
         $data = $request->validated();
-        User::create($data);
-        exit;
-        $page2 = 'usuariosCreate';
-        return view('usuario.form_save', compact('page2'));
+        if($request['id']) User::where('id', decrypt($request['id']))->update($data);
+        else User::create($data);
+        return redirect()->route('usuario.outra_pagina')->with('success', 'Cadastro Salvo...!');
+    }
+
+    public function changeStatus(string $id, string $status)
+    {
+        $id = decrypt($id);
+        User::where('id', $id)->update(['active' => $status]);
+        return redirect()->route('usuario.outra_pagina');
     }
 
     public function edit(string $id)
@@ -48,7 +51,7 @@ class UserController extends Controller
 
             // Busca o usuário normalmente
             $user = User::findOrFail($decryptedId);
-            return view('usuario.form_save', compact('user'));
+            return view('usuario.form_save', compact('user', 'id'));
         } catch (DecryptException $e) {
             // Se a chave for inválida ou alterada, redireciona com erro
             return abort('404');

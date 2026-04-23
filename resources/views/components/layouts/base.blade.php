@@ -206,6 +206,7 @@ $menusBar = [
   <?=CDN_JS_FONTAWESOME_ALL?>
   <?=CDN_JS_PERFECT_SCROLLBAR?>
   <?=CDN_JS_TOAST?>
+  <?=CDN_JS_SWEETALERT2?>
   <?=CDN_JS_PAGES?>
   {{ $scripts ?? '' }}
   @if (isset($js))
@@ -213,6 +214,20 @@ $menusBar = [
   @endif
   <?=CDN_JS_MAIN?>
   @yield('js2')
+
+@if (session()->has('success'))
+    <script>
+        addEventListener('DOMContentLoaded', () =>{
+        sweetSuccess('<?=session('success')?>')
+        });
+    </script>
+@elseif (session()->has('erro'))
+    <script>
+        addEventListener('DOMContentLoaded', () =>{
+        sweetErroBotao('<?=session('erro')?>')
+        });
+    </script>
+@endif
 </body>
 
 </html>
