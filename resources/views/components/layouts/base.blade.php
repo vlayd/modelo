@@ -19,24 +19,24 @@ $menusBar = [
             'id' => 'listaUsuariosCollapse',
             'show' => $page1 == PAGE[1][0] ? 'show' : '',
             'itens' => [
-                [
-                    'item' => BREADCRUMB[1][0],
-                    'miniItem' => 'Out',
-                    'activeMenuItem' => $page2 == PAGE[1][1] ? 'active' : '',
-                    'route' => BREADCRUMB[1][1],
-                ],
-                [
-                    'item' => BREADCRUMB[2][0],
-                    'miniItem' => 'Md-Aj',
-                    'activeMenuItem' => $page2 == PAGE[2][1] ? 'active' : '',
-                    'route' => BREADCRUMB[2][1],
-                ],
-                [
-                    'item' => BREADCRUMB[3][0],
-                    'miniItem' => 'Md-Rl',
-                    'activeMenuItem' => $page2 == PAGE[3][1] ? 'active' : '',
-                    'route' => BREADCRUMB[3][1],
-                ],
+              [
+                  'item' => BREADCRUMB[1][0],
+                  'miniItem' => 'Out',
+                  'activeMenuItem' => $page2 == PAGE[1][1] ? 'active' : '',
+                  'route' => BREADCRUMB[1][1],
+              ],
+              [
+                  'item' => BREADCRUMB[2][0],
+                  'miniItem' => 'Md-Aj',
+                  'activeMenuItem' => $page2 == PAGE[2][1] ? 'active' : '',
+                  'route' => BREADCRUMB[2][1],
+              ],
+              [
+                  'item' => BREADCRUMB[3][0],
+                  'miniItem' => 'Md-Rl',
+                  'activeMenuItem' => $page2 == PAGE[3][1] ? 'active' : '',
+                  'route' => BREADCRUMB[3][1],
+              ],
             ],
         ]
     ],
@@ -132,6 +132,7 @@ $menusBar = [
   <?=CDN_CSS_FONTAWESOME_ALL?>
   <?=CDN_CSS_JQUERY_TOAST?>
   <?=CDN_CSS_MAIN?>
+  @stack('styles')
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -140,9 +141,7 @@ $menusBar = [
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg  px-0 mx-4 shadow-none border-radius-xl z-index-sticky " id="navbarBlur" data-scroll="false">
       <div class="container-fluid py-1 px-3">
-        <!-- INÍCIO breadcrumb -->
-            <x-breadcrumb :breadcrumb="$breadcrumb" />
-        <!-- FIM breadcrumb -->
+            <x-components.breadcrumb :breadcrumb="$breadcrumb" />
 
         <!-- INÍCIO MENU sandwich -->
         <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -207,6 +206,7 @@ $menusBar = [
   <?=CDN_JS_PERFECT_SCROLLBAR?>
   <?=CDN_JS_TOAST?>
   <?=CDN_JS_SWEETALERT2?>
+  @stack('scripts')
   <?=CDN_JS_PAGES?>
   {{ $scripts ?? '' }}
   @if (isset($js))

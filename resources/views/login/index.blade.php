@@ -8,9 +8,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
   <title>{{ config('app.name') }}</title>
-  <?=CDN_CSS_CORE_ALL?>
   <?=CDN_CSS_MAIN?>
-  <?=CDN_CSS_FONTAWESOME_ALL?>
 </head>
 
 <body class="bg-gray-100">
@@ -36,9 +34,6 @@
                 />
                 <x-forms.input
                     campo="password"
-                    label="Senha"
-                    type="password"
-                    placeholder="Digite sua senha"
                 />
                 <div class="text-center">
                   <x-forms.button
@@ -49,13 +44,7 @@
 
                     {{-- invalid login --}}
                     @error('login')
-                        <div class="alert alert-danger alert-dismissible fade show text-white mt-3" role="alert">
-                            <span class="alert-icon"><i class="fas fa-exclamation-triangle"></i></span>
-                            <span class="alert-text"><strong>Erro! </strong>{{$message}}</span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                      <x-components.alert type="Erro!" message="{{$message}}" color="danger" />
                     @enderror
 
                 </div>
@@ -68,7 +57,7 @@
   </main>
   <!--   Core JS Files   -->
   <?=CDN_JS_CORE_ALL?>
-  <?=CDN_JS_FONTAWESOME_ALL?>
+  <?=CDN_JS_PERFECT_SCROLLBAR?>
   <?=CDN_JS_MAIN?>
 </body>
 

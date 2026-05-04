@@ -203,38 +203,10 @@ define('MUNICIPIOS', [
     22 => 'Xapuri'
 ]);
 
-define('TIPO_FERIADO', [
-    '1' => 'Feriado Nacional',
-    '2' => 'Feriado Estadual',
-    '3' => 'Ponto Facultativo'
-]);
 
 define('DIA_SEMANA_ABR', ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']);
 
-define('ALTERACAO_HISTORICO', [
-    1 => 'INÍCIO',
-    2 => 'CONTRATO',
-    3 => 'CARGO',
-    4 => 'MATRÍCULA',
-    5 => 'FUNÇÃO',
-    6 => 'GRATIFICAÇÃO',
-    7 => 'SETOR',
-    8 => 'CHEFIA'
-]);
 
-define('TIPOS_ANEXO', [
-    1 => 'Folha de Ponto',
-    2 => 'Faculdade',
-    3 => 'Especialização',
-    // 4 => 'Perfil',
-    // 5 => 'Aniversariante',
-    // 6 => 'Comemorativa',
-    7 => 'Mestrado',
-    8 => 'Doutorado',
-    9 => 'Outros Cursos',
-    10 => 'Referente a Função',
-    11 => 'Documentos',
-]);
 
 define('UF', [
     'AC' => 'AC',
@@ -281,7 +253,7 @@ define('MENU', [
 define('BREADCRUMB', [
     ['Home', 'index'],
     ['Outra página', 'usuario.outra_pagina'],
-    ['Modal Ajax', 'usuario.modal_ajax'],
+    ['Modal Ajax', 'usuario'],
     ['Modal Reload', 'usuario.modal_reload'],
 ]);
 
@@ -291,241 +263,18 @@ define('MSG_ERRO_REQUIRED', 'O campo :attribute é obrigatório.');
 define('MSG_ERRO_AUTH', 'Credenciais inválidas.');
 define('MSG_ERRO_AUTORIZATION', 'Usuário não autorizado.');
 define('MSG_ERRO_VALIDATE_EMAIL', 'Formato de e-mail válido.');
+define('MSG_ERRO_VALIDATE_CPF', 'Formato de CPF válido.');
+define('MSG_ERRO_CPF_REQUIRED', 'O campo CPF é obrigatório.');
+define('MSG_ERRO_EMAIL_REQUIRED', 'O campo e-mail é obrigatório.');
+define('MSG_ERRO_NAME_REQUIRED', 'O campo nome é obrigatório.');
+define('MSG_ERRO_DETE_REQUIRED', 'O campo data é obrigatório.');
+define('MSG_ERRO_EMAIL_UNIQUE', 'Este e-mail já está em uso.');
+define('MSG_ERRO_CPF_UNIQUE', 'Este CPF já está em uso.');
+define('MSG_ERRO_NAME_MAX', 'O campo nome deve ter no máximo 255 caracteres.');
+define('MSG_ERRO_EMAIL_MAX', 'O campo e-mail deve ter no máximo 255 caracteres.');
+define('MSG_ERRO_VALIDADE_DATE', 'A data está inválida.');
+define('MSG_ERRO_DATE_BEFORE', 'A data deve ser uma data anterior a hoje.');
 
-
-// ________________SELECT____________________
-define('SELECT_LISTA_USUARIO_INDEX', [
-    'usuarios.id AS idUser',
-    'usuarios.nome AS nomeUser',
-    'usuarios.cpf',
-    'usuarios.senha',
-    'usuarios.foto',
-    'usuarios.telefone',
-    'usuarios.email',
-    'usuarios.email2',
-    'usuarios.rh',
-    'usuarios.data_contratacao',
-    'usuarios.chefia',
-    'usuarios.escolaridade',
-    'usuarios.matricula',
-    'setores.nome AS nomeSetor',
-    'setores.sigla',
-    'contratos.nome AS nomeContrato'
-]);
-
-define('SELECT_LISTA_SETORES_INDEX', [
-    'setores.id',
-    'setores.nome',
-    'setores.sigla',
-
-]);
-
-define('SELECT_TIME_LINE', [
-    'historicos.id AS idhistorico',
-    'historicos.id_usuario AS userHistorico',
-    'historicos.contrato',
-    'historicos.matricula',
-    'historicos.funcao',
-    'historicos.gratificacao',
-    'historicos.chefia',
-    'historicos.data_contratacao',
-    'historicos.setor',
-    'historicos.anexos',
-    'data_rescisao',
-    'historicos.alteracao',
-    'historicos.cargo',
-    'historicos.atual',
-    'contratos.nome AS nomeContrato',
-    'cargos.nome AS nomeCargo',
-    'setores.nome AS nomeSetor',
-    'gratificacoes.nome AS nomeGratificacao',
-    'anexos.nome AS nomeAnexo',
-    'anexos.id_usuario AS userAnexo'
-]);
-define('SELECT_CONTRATOS', ['contratos.nome AS nomeContrato']);
-define('SELECT_CARGOS', '[cargos.nome AS nomeCargo]');
-define('SELECT_GRATIFICACOES', ['gratificacoes.nome AS nomeGratificacao']);
-define('SELECT_ANEXOS', ['anexos.nome AS nomeAnexo', 'anexos.id_usuario AS userAnexo']);
-
-define('SELECT_USUARIO_SETOR', [
-    'usuarios.id AS idUser', 'usuarios.nome AS nomeUser', 'sexo', 'cpf', 'senha', 'foto', 'telefone', 'telefone2', 'email', 'email2',
-    'endereco_rua', 'endereco_numero', 'endereco_bairro', 'endereco_complemento', 'endereco_cidade', 'nascimento', 'aniversario',
-    'secretaria_origem', 'usuarios.cargo', 'rg_numero', 'rg_orgao_emissor', 'rg_uf', 'oab', 'escolaridade', 'nome_o_classe', 'numero_o_classe',
-    'rh', 'setores.nome AS nomeSetor', 'sigla'
-]);
-
-define('SELECT_SETORES', ['setores.nome AS nomeSetor', 'sigla']);
-
-define(
-    'SELECT_SERVIDOR_DETAIL',
-    [
-        'usuarios.id AS idUsuario',
-        'usuarios.nome AS nomeUsuario',
-        'usuarios.sexo',
-        'usuarios.foto',
-        'usuarios.nascimento',
-        'usuarios.cpf',
-        'usuarios.rg_numero',
-        'usuarios.rg_orgao_emissor',
-        'usuarios.rg_uf',
-        'usuarios.telefone',
-        'usuarios.telefone2',
-        'usuarios.email',
-        'usuarios.email2',
-        'usuarios.endereco_rua',
-        'usuarios.endereco_numero',
-        'usuarios.endereco_complemento',
-        'usuarios.endereco_bairro',
-        'usuarios.endereco_cidade',
-        'usuarios.nome_o_classe',
-        'usuarios.numero_o_classe',
-        'usuarios.escolaridade',
-        'usuarios.secretaria_origem',
-        'escolaridades.id AS idEscolar',
-        'escolaridades.nome AS nomeEscolar',
-        'historicos.matricula',
-        'historicos.funcao',
-        'historicos.chefia',
-        'historicos.data_contratacao',
-        'historicos.data_rescisao',
-        'historicos.anexos',
-        'contratos.nome AS nomeContrato',
-        'gratificacoes.nome AS nomeGratificacao',
-        'cargos.nome AS nomeCargo',
-        'setores.nome AS nomeSetor',
-        ]
-    );
-
-    define('SELECT_SERVIDOR_PONTO',
-    [
-        'usuarios.id AS idUsuario',
-        'usuarios.nome',
-        'usuarios.foto',
-        'ponto.id AS idPonto',
-        'ponto.mes',
-        'ponto.ano',
-        'ponto.anexo',
-        'ponto.observacao',
-        'ponto.status_anexo',
-        'ponto.status',
-    ]);
-
-    define('SELECT_USUARIO_PONTO',
-    [
-        'usuarios.id AS idUsuario',
-        'usuarios.nome',
-        'contratos.nome AS nomeContrato',
-        'ponto.id AS idPonto',
-        'ponto.mes',
-        'ponto.ano',
-        'historicos.id_usuario',
-        'historicos.contrato',
-        'historicos.cargo',
-        'historicos.matricula',
-        'historicos.funcao',
-        'historicos.setor',
-        'historicos.data_contratacao',
-        'historicos.data_rescisao',
-    ]);
-
-    define('SELECT_HISTORICO_PONTO',
-        [
-        'historicos.id AS idhistorico',
-        'historicos.id_usuario AS userHistorico',
-        'historicos.contrato',
-        'historicos.funcao',
-        'historicos.data_contratacao',
-        'historicos.setor',
-        'historicos.data_rescisao',
-        'usuarios.nome AS nomeUsuario',
-        'contratos.nome AS nomeContrato',
-        'setores.nome AS nomeSetor'
-        ]
-    );
-    define(
-        'SELECT_SERVIDOR_HISTORICOS',
-        [
-        'historicos.id AS idHistorico',
-        'historicos.id_usuario AS userHistorico',
-        'historicos.matricula',
-        'historicos.funcao',
-        'historicos.gratificacao',
-        'historicos.chefia',
-        'historicos.data_contratacao',
-        'historicos.setor',
-        'historicos.anexos',
-        'historicos.data_rescisao',
-        'historicos.alteracao',
-        'historicos.cargo',
-        'historicos.anexos',
-        'historicos.atual',
-        'contratos.nome AS nomeContrato',
-        'gratificacoes.nome AS nomeGratificacao',
-        'cargos.nome AS nomeCargo',
-        'setores.nome AS nomeSetor',
-        // 'anexos.nome AS nomeAnexo',
-        // 'anexos.anexo AS anexo',
-        ]
-    );
-
-    define('SELECT_FUNCAO_INTERINA',
-        [
-        'funcao_interina.id',
-        'funcao_interina.id_historico',
-        'funcao_interina.anexos',
-        'funcao_interina.funcao',
-        'funcao_interina.chefia',
-        'funcao_interina.data_contratacao',
-        'funcao_interina.data_rescisao',
-        'funcao_interina.observacao',
-        'funcao_interina.setor',
-        'setores.nome AS nomeSetor'
-        ]
-    );
-
-define('SELECT_SERVIDOR_PDF',
-    [
-        'usuarios.id AS idUser',
-        'usuarios.nome',
-        'usuarios.nascimento',
-        'usuarios.cpf',
-        'usuarios.rg_numero',
-        'usuarios.rg_orgao_emissor',
-        'usuarios.rg_uf',
-        'usuarios.telefone',
-        'usuarios.telefone2',
-        'usuarios.email',
-        'usuarios.email2',
-        'usuarios.endereco_rua',
-        'usuarios.endereco_numero',
-        'usuarios.endereco_complemento',
-        'usuarios.endereco_bairro',
-        'usuarios.endereco_cidade',
-        'usuarios.escolaridade',
-        'escolaridades.id AS idEscolar',
-        'escolaridades.nome AS nomeEscolar',
-        'historicos.contrato AS contratoHistorico',
-        'contratos.nome AS nomeContrato',
-        'gratificacoes.nome AS nomeGratificacao',
-    ]
-);
-
-    // ________________JOIN____________________
-    define('JOIN_USUARIO_SETOR', ['setores', 'usuarios.setor', 'setores.id']);
-    define('JOIN_USUARIO_ESCOLARIDADE', 'usuarios.escolaridade = escolaridades.id');
-    define('JOIN_USUARIO_HISTORICO', 'historicos.id_usuario = usuarios.id');
-    define('JOIN_USUARIO_GRATIFICACAO', 'usuarios.gratificacao = gratificacoes.id');
-    define('JOIN_USUARIO_CARGO', 'usuarios.cargo = cargos.id');
-    define('JOIN_USUARIO_CONTRATO', 'usuarios.contrato = contratos.id');
-    define('JOIN_USUARIO_PONTO', 'usuarios.id = ponto.id_usuario');
-    define('JOIN_USUARIO_FERIAS', 'usuarios.id = ferias.id_servidor');
-
-    define('JOIN_HISTORICO_USUARIO', ['usuarios', 'historicos.id_usuario', 'usuarios.id']);
-    define('JOIN_HISTORICO_CONTRATO', ['contratos', 'historicos.contrato', 'contratos.id']);
-    define('JOIN_HISTORICO_CARGO', ['cargos', 'historicos.cargo', 'cargos.id']);
-    define('JOIN_HISTORICO_GRATIFICACAO', ['gratificacoes', 'historicos.gratificacao', 'gratificacoes.id']);
-    define('JOIN_HISTORICO_SETOR', ['setores', 'historicos.setor', 'setores.id']);
-    define('JOIN_HISTORICO_ANEXO', ['anexos', 'historicos.anexos', 'anexos.id']);
-    define('JOIN_HISTORICO_PONTO', ['ponto', 'historicos.id_usuario', 'ponto.id_usuario']);
-
-    define('JOIN_FUNCAOINTERINA_SETOR', ['setores', 'funcao_interina.setor', 'setores.id']);
+//Textos úteis
+define('TXT_INPUT_EMAIL', 'Digite seu e-mail');
+define('TXT_INPUT_PASSWORD', 'Digite sua senha');

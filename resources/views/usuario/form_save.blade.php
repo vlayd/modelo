@@ -17,8 +17,7 @@
         </x-slot:header>
         <div class="row">
         </div>
-        <form action="{{ route('usuario.store') }}" method="POST" novalidate>
-            @csrf
+        <x-forms.form routeName="usuario.store">
             <div class="row">
                 <x-forms.input campo="name" label="Nome" value="{{old('name')??$user['name']??''}}" class="col-6" required='true'/>
                 <x-forms.input campo="cpf" label="CPF" value="{{old('cpf')??$user['cpf']??''}}" classInput="cpf" class="col-6" required='true'/>
@@ -30,7 +29,7 @@
             </div>
             <x-forms.button text="Salvar" type="submit" class="mt-4"/>
             <x-forms.button text="Cancelar" url="{{ BREADCRUMB[1][1] }}" class="mt-4"/>
-        </form>
+        </x-forms.form>
     </x-cards.card>
 
     <x-slot:scripts>

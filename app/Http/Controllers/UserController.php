@@ -15,6 +15,12 @@ class UserController extends Controller
         return view('usuario.index');
     }
 
+    public function table()
+    {
+        $usuarios = User::get()->toArray();
+        return view('usuario.table', compact('usuarios'));
+    }
+
     public function outraPagina()
     {
         $usuarios = User::get()->toArray();
@@ -48,7 +54,6 @@ class UserController extends Controller
         try {
             // Desencripta o ID recebido
             $decryptedId = decrypt($id);
-
             // Busca o usuário normalmente
             $user = User::findOrFail($decryptedId);
             return view('usuario.form_save', compact('user', 'id'));
@@ -61,7 +66,13 @@ class UserController extends Controller
     public function modalAjax()
     {
         $page2 = 'usuariosModalAjax';
-        return view('usuario.modal_ajax', compact('page2'));
+        return view('usuario.index', compact('page2'));
+    }
+
+    public function tabelaAjax()
+    {
+        $usuarios = User::get()->toArray();
+        return view('usuario.table', compact('usuarios'));
     }
 
     public function modalReload()

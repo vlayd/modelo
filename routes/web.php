@@ -13,6 +13,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::prefix('usuario')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('usuario');
+        Route::get('/table', [UserController::class, 'table'])->name('usuario.table');
         Route::get('/outra_pagina', [UserController::class, 'outraPagina'])->name('usuario.outra_pagina');
         Route::get('/create', [UserController::class, 'create'])->name('usuario.create');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('usuario.edit');

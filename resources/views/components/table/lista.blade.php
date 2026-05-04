@@ -1,4 +1,4 @@
-<x-cards.card>
+<x-cards.card id="tabela">
     <x-slot:header>
         <div class="d-lg-flex">
             <div>
@@ -18,15 +18,10 @@
             @endif
         </div>
     </x-slot:header>
-    <div class="table-responsive" class="">
-    <table class="table table-flush table-striped table-hover" id="data-list-db">
-        <thead class="thead-light">
-            {{ $thead }}
-        </thead>
-        <tbody>
-            {{ $tbody }}
-        </tbody>
+    {{ $slot }}
 
-    </table>
-</div>
+    @push('scripts')
+    <?=CDN_JS_DATATABLES?>
+    @endpush
+
 </x-cards.card>

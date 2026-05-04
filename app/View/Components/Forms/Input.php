@@ -20,6 +20,7 @@ class Input extends Component
         public ?string $label=null,
         public ?string $value = null,
         public string $placeholder = '',
+        public string $attrs = '',
         public ?string $classInput = '',
         public ?string $campoId = null,
         public ?string $inputGroup = null,
@@ -32,6 +33,13 @@ class Input extends Component
     {
         $required = '';
         if ($this->required) {
+            $required = 'required';
+        }
+        if($this->campo == 'password'){
+            $this->label = 'Senha';
+            $this->type = 'password';
+            $this->attrs = 'autocomplete="on"';
+            $this->placeholder = TXT_INPUT_PASSWORD;
             $required = 'required';
         }
         return view('components.forms.input', compact('required'));

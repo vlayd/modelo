@@ -14,8 +14,7 @@
                 "form-control input_text $classInput",
                 ($errors->has($campo) ? ' is-invalid' : '')
             ])
-            value="{{ $value }}"
-            placeholder="{{ $placeholder }}" {!! $required !!}>
+            value="{{ $value }}" placeholder="{{ $placeholder }}" {!! $required !!} {!! $attrs !!}>
 
         @if (isset($inputGroup) && $positionGroup == 'after')
             <span class="input-group-text">{{ $inputGroup }}</span>
