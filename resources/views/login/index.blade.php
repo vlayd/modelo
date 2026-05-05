@@ -26,27 +26,14 @@
             <div class="card-body">
               <form role="form" class="text-start needs-validation" method="post" action="login" novalidate>
                 @csrf
-                <x-forms.input
-                    campo="email"
-                    label="E-mail"
-                    value="{{old('email')}}"
-                    placeholder="Digite seu e-mail"
-                />
-                <x-forms.input
-                    campo="password"
-                />
+                <x-forms.input campo="email" label="E-mail" value="{{old('email')}}" placeholder="Digite seu e-mail" />
+                <x-forms.input campo="password" />
                 <div class="text-center">
-                  <x-forms.button
-                    text="Acessar"
-                    type="submit"
-                    class="w-100 mt-4 mb-0"
-                  />
-
+                  <x-forms.button text="Acessar" type="submit" class="w-100 mt-4 mb-0" />
                     {{-- invalid login --}}
                     @error('login')
                       <x-components.alert type="Erro!" message="{{$message}}" color="danger" />
                     @enderror
-
                 </div>
               </form>
             </div>

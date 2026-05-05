@@ -18,6 +18,7 @@ class Button extends Component
         public string $modal = '',
         public bool $disabled = false,
         public string $class = '',
+        public string $id = '',
         public string $type = 'button',
         public string $url = 'javascript:void(0)',
         public string $color = 'primary',
@@ -32,19 +33,22 @@ class Button extends Component
         $tag = 'button';
         $icon = $this->icon;
         $width = $this->full ? 'w-100' : '';
-        $atrributes = 'type="' . $this->type . '"';
+        $attr = 'type="' . $this->type . '" ' . (!empty($this->id) ? 'id="' . $this->id . '"' : '');
         $classIcon = '';
+        $class = $this->class;
         if(!empty($this->modal)) {
             $tag = 'button';
-            $attributes = 'type="button" data-bs-toggle="modal" data-bs-target="#' . $this->modal . 'Modal"';
+            $attr = 'type="button" data-bs-toggle="modal" data-bs-target="#' . $this->modal . 'Modal"';
             $class = $this->class . ' btn_prepare_' . $this->modal;
-        }
-        if($this->type == 'link' || $this->text == 'Cancelar') {
+        }elseif($this->type == 'link' || $this->text == 'Cancelar') {
             $tag = 'a';
-            $atrributes = 'href="' . route($this->url) . '"';
+            $attr = 'href="' . route($this->url) . '"';
             if($this->text == 'Cancelar')  $this->color = 'outline-danger';
         }
+        if(!empty($this->id)) $attr .= ' id="' . $this->id . '"';
+        if($this->disabled) $attr .= ' disabled';
+        // if($icon) $classIcon = $icon . ' fa-lg';
 
-        return view('components.forms.button', compact('tag', 'atrributes', 'width'));
+        return view('components.forms.button', compact('tag', 'attr', 'width', 'class'));
     }
 }

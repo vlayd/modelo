@@ -13,6 +13,7 @@ class Modal extends Component
      */
     public function __construct(
         public $showButton = true,
+        public $form = false,
         public $title = '',
         public $id = 'modal',
     )

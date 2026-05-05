@@ -1,4 +1,4 @@
-<form id="form_save" action="{{ route($routeName) }}" method="{{ $method }}" novalidate>
+<form id="form_save" {{ $attr }} novalidate>
     @csrf
     {{ $slot }}
 </form>

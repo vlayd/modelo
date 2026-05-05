@@ -10,6 +10,7 @@
                 <x-forms.button
                     :text=$textButton
                     :url=$urlButton
+                    :modal=$modalButton
                     type="link"
                     class="text-xs me-3"
                     icon="fas fa-plus fa-lg"

@@ -12,6 +12,7 @@
         title="Lista de Usuários"
         textButton="Adicionar Usuário"
         urlButton="usuario.create"
+        modalButton="save"
         description="Aqui estão listados todos os usuários cadastrados no sistema.">
     </x-table.lista>
     <x-components.modal>

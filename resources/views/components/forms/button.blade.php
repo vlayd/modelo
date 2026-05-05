@@ -1,5 +1,4 @@
-
-<{{ $tag }} class="btn btn-{{ $color }} {{ $width }} {{ $class }}" {!! $atrributes !!}>
+<{{ $tag }} class="btn btn-{{ $color }} {{ $width }} {{ $class }}" {!! $attr !!}>
     @if (isset($icon) && $positionIcon == 'before')
         <span
         @class([
